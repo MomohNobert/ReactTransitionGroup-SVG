@@ -34,20 +34,20 @@ function App() {
   );
 };
 
-function BoardSpace(props) {
+function BoardSpace({ symbol, index, setSpace }) {
   return (
     <button
     onClick={() => {
-      if (props.symbol) return;
-      props.setSpace(props.index)}
+      if (symbol) return;
+      setSpace(index)}
     }
     className={`
       game-board__button
-      ${props.symbol ? 'game-board__button--disabled' : ''}
+      ${symbol ? 'game-board__button--disabled' : ''}
     `}>
       
       <CSSTransition
-      in={props.symbol === 'x'}
+      in={symbol === 'x'}
       timeout={700}
       classNames={'x-'}
       exit={false}
@@ -56,7 +56,7 @@ function BoardSpace(props) {
       </CSSTransition>
 
       <CSSTransition
-      in={props.symbol === 'o'}
+      in={symbol === 'o'}
       timeout={700}
       classNames={'o-'}
       exit={false}

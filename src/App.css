@@ -1,3 +1,7 @@
+/* ------------- */
+/* Global Styles */
+/* ------------- */
+
 *, *:before, *:after { box-sizing: border-box; }
 
 body {
@@ -14,6 +18,10 @@ body {
   height: 400px;
   position: relative;
 }
+
+/* ---------- */
+/* Game Board */
+/* ---------- */
 
 .game-board {
   width: 100%;
@@ -51,6 +59,10 @@ body {
 .game-board__button:hover { background: #01023a; }
 .game-board__button--disabled { cursor: auto; }
 .game-board__button--disabled:hover { background: #020357; }
+
+/* ------- */
+/* X and O */
+/* ------- */
 
 .o {
   width: 60%;
