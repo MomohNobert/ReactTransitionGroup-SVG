@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
-}
+*, *:before, *:after { box-sizing: border-box; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  margin: 0;
+  background: #5e3fde;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.game {
+  width: 400px;
+  height: 400px;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.game-board {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #020357;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.game-board__button {
+  width: 33%;
+  height: 33%;
+  background: transparent;
+  padding: 0;
+  border: 5px solid #25166c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.game-board__button:nth-child(-n + 3) { border-top: 0; height: 34%; }
+.game-board__button:nth-child(3n + 1) { border-left: 0; }
+.game-board__button:nth-child(3n + 3) { border-right: 0; width: 34%; }
+.game-board__button:nth-last-child(-n + 3) { border-bottom: 0; }
+
+.game-board__button:hover { background: #01023a; }
+.game-board__button--disabled { cursor: auto; }
+.game-board__button--disabled:hover { background: #020357; }
+
+.o {
+  width: 60%;
+  transform: rotate(-90deg);
+}
+
+.o__line{
+  fill: none;
+  stroke: #FBA919;
+  stroke-width: 20;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 126;
+  stroke-linecap: round;
+}
+
+.o--enter .o__line { stroke-dashoffset: 126; }
+.o--enter-active .o__line { stroke-dashoffset: 0; transition: stroke-dashoffset 0.7s cubic-bezier(0.85, 0, 0.15, 1); }
+.o--enter-done .o__line { stroke-dashoffset: 0; }
+
+.x { width: 55%; }
+
+.x__line {
+  fill: none;
+  stroke: #F05483;
+  stroke-width: 20;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 45;
+}
+
+.x--enter .x__line-1 { stroke-dashoffset: 45; }
+.x--enter-active .x__line-1 { stroke-dashoffset: 0; transition: stroke-dashoffset 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.x--enter-done .x__line-1 { stroke-dashoffset: 0; }
+
+.x--enter .x__line-2 { stroke-dashoffset: 45; }
+.x--enter-active .x__line-2 { stroke-dashoffset: 0; transition: stroke-dashoffset 0.35s 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.x--enter-done .x__line-2 { stroke-dashoffset: 0; }
